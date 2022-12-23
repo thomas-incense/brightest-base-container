@@ -48,6 +48,10 @@ RUN apt-get update
 RUN pip install --upgrade pip
 RUN pip install gdal
 
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+RUN npm install -g npm@8.19.1
 
 # Update C env vars so compiler can find gdal
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
